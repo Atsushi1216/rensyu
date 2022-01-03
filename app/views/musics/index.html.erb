@@ -1,1 +1,11 @@
 <h1>Music index</h1>
+<% @musics.each do |music| %>
+<div>
+  <%= attachment_image_tag music, :song_image %>
+  <p>投稿画像：<%= image_tag('no_image.jpg') %></p>
+  <p>タイトル：<%= music.title %></p>
+  <p>バンド名：<%= music.band_name %></p>
+  <p>更新日：<%= music.update_day %></p>
+  <p>曲：<%= music.song %></p>
+</div>
+<% end %>

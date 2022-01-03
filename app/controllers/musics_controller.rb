@@ -6,6 +6,14 @@ class MusicsController < ApplicationController
   end
 
   def create
+    @music = Music.new(music_params)
+    @music.user_id = current_user.id
+    @music.save
+    redirect_to musics_path
+  end
+
+  def new
+    @music = Music.new
   end
 
   def show
@@ -15,6 +23,7 @@ class MusicsController < ApplicationController
 
   def edit
   end
+
 
   def update
     if @music.update(music_params)
@@ -31,7 +40,7 @@ class MusicsController < ApplicationController
 
  private
   def music_params
-    params.require(:music).permit(:title, :body, :evaluation)
+    params.require(:music).permit(:title, :band_name, :update_day, :song_image, :song)
   end
 
 end
